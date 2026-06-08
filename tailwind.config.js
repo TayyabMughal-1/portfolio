@@ -1,0 +1,1 @@
+module.exports = { content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"], theme: { extend: { colors: { neon: '#00f5a0', darkbg: '#050913', card: '#0b1220' }, boxShadow: { glow: '0 0 35px rgba(0,245,160,.25)' } } }, plugins: [] }

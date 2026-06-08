@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px;
+}
+
+body {
+  background: #e0e5ec;
+  color: #3d4852;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+section {
+  scroll-margin-top: 120px;
+}
+
+.badge {
+  color: #6c63ff;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.text-muted {
+  color: #6b7280;
+}
+
+.glass {
+  background: #e0e5ec;
+  box-shadow:
+    9px 9px 16px rgba(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  box-shadow:
+    12px 12px 20px rgba(163, 177, 198, 0.7),
+    -12px -12px 20px rgba(255, 255, 255, 0.6);
+}
+
+.shadow-extruded {
+  box-shadow:
+    9px 9px 16px rgba(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.shadow-inset {
+  box-shadow:
+    inset 6px 6px 10px rgba(163, 177, 198, 0.6),
+    inset -6px -6px 10px rgba(255, 255, 255, 0.5);
+}
+
+.shadow-insetDeep {
+  box-shadow:
+    inset 10px 10px 20px rgba(163, 177, 198, 0.7),
+    inset -10px -10px 20px rgba(255, 255, 255, 0.6);
+}
+
+.icon-3d {
+  width: 56px;
+  height: 56px;
+  border-radius: 20px;
+  background: #e0e5ec;
+  color: #6c63ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    8px 8px 16px rgba(163, 177, 198, 0.75),
+    -8px -8px 16px rgba(255, 255, 255, 0.85);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.icon-3d:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+input,
+textarea {
+  background: #e0e5ec;
+  color: #3d4852;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8b95a5;
+}
