@@ -1,10 +1,18 @@
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin, TrendingUp } from "lucide-react";
+import {
+  Briefcase,
+  Calendar,
+  MapPin,
+  TrendingUp,
+  ExternalLink,
+} from "lucide-react";
 
 const experience = [
   {
     role: "Senior SEO Expert",
     company: "Spadasoft Inc.",
+    companyUrl:
+      "https://www.linkedin.com/company/spadasoft/posts/?feedView=all",
     location: "Lahore",
     period: "June 2024 – Present",
     focus: "Advanced SEO Strategy",
@@ -19,6 +27,7 @@ const experience = [
   {
     role: "Marketing Manager / SEO Expert",
     company: "Jasper HealthCare",
+    companyUrl: "https://www.linkedin.com/company/jasper-healthcare-pk/",
     location: "Lahore",
     period: "Aug 2023 – June 2024",
     focus: "Marketing Growth",
@@ -33,6 +42,8 @@ const experience = [
   {
     role: "Senior SEO Expert",
     company: "Cosmetique",
+    companyUrl:
+      "https://www.linkedin.com/company/cosmetique-dermatology-laser-&-plastic-surgery-llp/",
     location: "Lahore",
     period: "Dec 2023 – May 2024",
     focus: "Beauty & Clinic SEO",
@@ -47,6 +58,8 @@ const experience = [
   {
     role: "SEO Expert",
     company: "Wangard International",
+    companyUrl:
+      "https://www.linkedin.com/company/wangard-international/posts/?feedView=all",
     location: "Lahore",
     period: "Sep 2022 – Nov 2023",
     focus: "Lead Generation SEO",
@@ -61,6 +74,8 @@ const experience = [
   {
     role: "SEO Expert / Marketing Specialist",
     company: "Typhon Agency",
+    companyUrl:
+      "https://www.linkedin.com/company/typhonagency/posts/?feedView=all",
     location: "Lahore",
     period: "Dec 2019 – Aug 2021",
     focus: "Organic Growth Support",
@@ -94,7 +109,6 @@ export default function Experience() {
 
         <div className="mt-14 relative">
           <div className="hidden lg:block absolute left-1/2 top-0 h-full w-1 -translate-x-1/2 rounded-full shadow-insetDeep" />
-
           <div className="space-y-8">
             {experience.map((item, index) => (
               <motion.div
@@ -103,54 +117,70 @@ export default function Experience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
-                className={`grid lg:grid-cols-2 gap-8 items-stretch ${
-                  index % 2 === 0 ? "" : "lg:[&>*:first-child]:order-2"
-                }`}
+                className={`grid lg:grid-cols-2 gap-8 items-stretch ${index % 2 === 0 ? "" : "lg:[&>*:first-child]:order-2"}`}
               >
-                <div className="glass rounded-[32px] p-7 md:p-8">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-full px-4 py-2 text-sm font-bold text-violet-500 shadow-inset">
-                      {item.focus}
-                    </span>
-                    <span className="rounded-full px-4 py-2 text-sm font-bold text-[#3D4852] shadow-inset">
-                      {item.period}
-                    </span>
+                <div className="glass rounded-[32px] p-7 md:p-8 flex flex-col justify-between">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <span className="rounded-full px-4 py-2 text-sm font-bold text-violet-500 shadow-inset">
+                        {item.focus}
+                      </span>
+                      <span className="rounded-full px-4 py-2 text-sm font-bold text-[#3D4852] shadow-inset">
+                        {item.period}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl md:text-3xl font-extrabold">
+                      {item.role}
+                    </h3>
+
+                    <div className="flex flex-wrap gap-4 mt-5 text-sm text-muted">
+                      <span className="flex items-center gap-2">
+                        <Briefcase size={16} className="text-violet-500" />
+                        {item.company}
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <MapPin size={16} className="text-violet-500" />
+                        {item.location}
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <Calendar size={16} className="text-violet-500" />
+                        {item.period}
+                      </span>
+                    </div>
+
+                    <div className="mt-6 rounded-3xl p-5 shadow-insetDeep">
+                      <p className="flex items-start gap-3 font-bold">
+                        <TrendingUp
+                          size={20}
+                          className="text-violet-500 mt-1"
+                        />
+                        <span>{item.result}</span>
+                      </p>
+                    </div>
+
+                    <ul className="mt-6 space-y-3">
+                      {item.points.map((point, i) => (
+                        <li key={i} className="flex gap-3 text-muted leading-7">
+                          <span className="mt-2 h-2 w-2 rounded-full bg-violet-500 shrink-0" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <h3 className="text-2xl md:text-3xl font-extrabold mt-6">
-                    {item.role}
-                  </h3>
-
-                  <div className="flex flex-wrap gap-4 mt-4 text-sm text-muted">
-                    <span className="flex items-center gap-2">
-                      <Briefcase size={16} className="text-violet-500" />
-                      {item.company}
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <MapPin size={16} className="text-violet-500" />
-                      {item.location}
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <Calendar size={16} className="text-violet-500" />
-                      {item.period}
-                    </span>
-                  </div>
-
-                  <div className="mt-6 rounded-3xl p-5 shadow-insetDeep">
-                    <p className="flex items-start gap-3 font-bold">
-                      <TrendingUp size={20} className="text-violet-500 mt-1" />
-                      <span>{item.result}</span>
-                    </p>
-                  </div>
-
-                  <ul className="mt-6 space-y-3">
-                    {item.points.map((point, i) => (
-                      <li key={i} className="flex gap-3 text-muted leading-7">
-                        <span className="mt-2 h-2 w-2 rounded-full bg-violet-500 shrink-0" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Button at the bottom, fully filled */}
+                  {item.companyUrl && (
+                    <a
+                      href={item.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex mt-6 items-center justify-center gap-2 rounded-2xl px-6 py-3 bg-violet-500 text-white text-sm font-bold shadow-extruded hover:-translate-y-1 transition w-full"
+                    >
+                      Visit Company Profile
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
                 </div>
 
                 <div className="hidden lg:flex items-center justify-center">

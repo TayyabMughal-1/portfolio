@@ -1,57 +1,76 @@
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
-const menu = [
-  { label: "Home", href: "#home" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Results", href: "#analytics" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/results", label: "Results" },
+  { href: "/experience", label: "Experience" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
-  const [active, setActive] = useState("#home");
-
-  useEffect(() => {
-    const onScroll = () => {
-      let current = "#home";
-
-      menu.forEach((item) => {
-        const section = document.querySelector(item.href);
-        if (section && window.scrollY >= section.offsetTop - 170) {
-          current = item.href;
-        }
-      });
-
-      setActive(current);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    onScroll();
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 px-4">
-      <nav className="mx-auto max-w-4xl rounded-full bg-[#E0E5EC]/90 backdrop-blur-xl shadow-extruded px-3 py-3">
-        <ul className="flex items-center justify-center gap-1 overflow-x-auto no-scrollbar">
-          {menu.map((item) => (
-            <li key={item.href}>
-              <a
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4 bg-[#E0E5EC]/80 backdrop-blur-xl">
+      <nav className="max-w-7xl mx-auto bg-[#E0E5EC] rounded-[28px] px-5 py-4 flex items-center justify-center shadow-extruded relative">
+        {/* Menu for large screens */}
+        <div className="hidden lg:flex items-center gap-2">
+          {navItems.map((item) => {
+            const active = router.pathname === item.href;
+            return (
+              <Link
+                key={item.href}
                 href={item.href}
-                className={`block whitespace-nowrap rounded-full px-4 py-2 text-sm font-bold transition-all ${
-                  active === item.href
+                className={`px-5 py-3 rounded-2xl text-sm font-bold transition ${
+                  active
                     ? "bg-violet-500 text-white"
                     : "text-[#3D4852] hover:text-violet-500"
                 }`}
               >
                 {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Hamburger button for mobile */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="lg:hidden w-11 h-11 rounded-2xl shadow-insetDeep flex items-center justify-center text-violet-500 absolute right-5"
+        >
+          {open ? <X /> : <Menu />}
+        </button>
       </nav>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="lg:hidden max-w-7xl mx-auto mt-4 bg-[#E0E5EC] rounded-[28px] p-4 shadow-extruded">
+          <div className="grid gap-2">
+            {navItems.map((item) => {
+              const active = router.pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={`px-5 py-4 rounded-2xl text-sm font-bold ${
+                    active
+                      ? "bg-violet-500 text-white"
+                      : "text-[#3D4852] shadow-inset"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

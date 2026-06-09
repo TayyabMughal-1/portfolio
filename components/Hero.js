@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -6,140 +7,147 @@ import {
   Search,
   TrendingUp,
   Target,
-  CheckCircle,
   Rocket,
   User,
 } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className=" bg-[#E0E5EC] px-5 md:px-10 lg:px-16 pt-36 pb-20 overflow-hidden"
-    >
+    <section className="relative bg-[#E0E5EC] px-5 md:px-10 lg:px-16 pt-12 pb-16 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 35 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center gap-3 rounded-full px-5 py-3 shadow-inset bg-[#E0E5EC]">
+            <div className="inline-flex items-center gap-3 rounded-full px-5 py-3 shadow-insetDeep">
               <span className="w-3 h-3 rounded-full bg-violet-500" />
-              <span className="badge">SEO Expert Portfolio</span>
+              <span className="text-violet-500 tracking-[0.35em] text-xs font-extrabold uppercase">
+                SEO Expert Portfolio
+              </span>
             </div>
 
-            <h1 className="mt-7 text-6xl md:text-8xl font-extrabold leading-[0.9] tracking-tight">
+            <h1 className="mt-8 text-[72px] md:text-[96px] lg:text-[104px] leading-[0.9] font-black tracking-[-0.07em] text-[#3D4852]">
               Tayyab
               <br />
               <span className="text-violet-500">Mughal</span>
             </h1>
 
-            <p className="mt-7 text-xl md:text-2xl font-bold text-[#3D4852]">
+            <h2 className="mt-8 text-2xl md:text-3xl font-extrabold text-[#273444] leading-snug">
               Senior <span className="text-violet-500">SEO Expert</span> &
               Digital Growth Strategist
-            </p>
+            </h2>
 
-            <p className="mt-5 text-muted max-w-xl leading-8">
+            <p className="mt-6 max-w-2xl text-muted text-lg leading-9">
               Helping businesses rank higher, drive qualified traffic, and
               generate more leads with data-driven SEO strategies that deliver
               real results.
             </p>
 
-            <div className="flex flex-wrap gap-4 mt-8">
-              <MiniPill icon={<User />} text="7+ Years Experience" />
-              <MiniPill icon={<Rocket />} text="15+ Projects Delivered" />
-              <MiniPill icon={<BarChart3 />} text="300% Avg. Growth" />
+            <div className="grid sm:grid-cols-3 gap-4 mt-9 max-w-2xl">
+              <MiniStat icon={<User size={22} />} text="7+ Years Experience" />
+              <MiniStat
+                icon={<Rocket size={22} />}
+                text="15+ Projects Delivered"
+              />
+              <MiniStat
+                icon={<BarChart3 size={22} />}
+                text="300% Avg. Growth"
+              />
             </div>
 
-            <div className="flex flex-wrap gap-5 mt-10">
-              <a
-                href="#projects"
-                className="group bg-violet-500 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3 shadow-extruded hover:-translate-y-1 transition-all"
+            <div className="flex flex-wrap gap-5 mt-9">
+              <Link
+                href="/projects"
+                className="h-16 px-8 rounded-2xl bg-violet-500 text-white font-extrabold flex items-center gap-3 shadow-extruded hover:-translate-y-1 transition"
               >
-                View My Projects
-                <ArrowRight
-                  size={20}
-                  className="group-hover:translate-x-1 transition"
-                />
-              </a>
+                View My Projects <ArrowRight size={20} />
+              </Link>
 
-              <a
-                href="#contact"
-                className="px-8 py-4 rounded-2xl font-bold text-[#3D4852] shadow-extruded flex items-center gap-3 hover:-translate-y-1 transition-all"
+              <Link
+                href="/contact"
+                className="h-16 px-8 rounded-2xl text-[#273444] font-extrabold flex items-center gap-3 shadow-extruded hover:-translate-y-1 transition"
               >
-                Hire Me <User size={18} className="text-violet-500" />
-              </a>
+                Hire Me <User size={19} className="text-violet-500" />
+              </Link>
             </div>
 
-            <div className="glass rounded-[28px] p-5 mt-12 max-w-2xl">
-              <p className="text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="mt-12 max-w-3xl rounded-[28px] p-6 shadow-extruded">
+              <p className="text-xs uppercase tracking-[0.25em] font-extrabold text-[#273444] mb-5">
                 Trusted Project Experience
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-bold">
-                <Brand text="Sapphire" />
-                <Brand text="White n Green" />
-                <Brand text="Refecoin" />
-                <Brand text="LockRoom" />
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {["Sapphire", "White n Green", "Refecoin", "LockRoom"].map(
+                  (item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl py-4 text-center font-extrabold text-[#273444] shadow-insetDeep"
+                    >
+                      {item}
+                    </div>
+                  ),
+                )}
               </div>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative min-h-[680px]"
+            transition={{ duration: 0.7 }}
+            className="relative flex justify-center lg:justify-end"
           >
-            <FloatingCard
-              className="left-0 top-0"
-              title="SEO Score"
-              value="92"
-              note="Excellent"
-            />
+            <div className="relative w-full max-w-[520px]">
+              <div className="absolute -top-12 -left-6 md:-left-24 z-20 hidden md:block">
+                <FloatingCard title="SEO Score" value="92" label="Excellent" />
+              </div>
 
-            <FloatingCard
-              className="left-0 bottom-28"
-              title="Backlinks"
-              value="6,680"
-              note="+457%"
-            />
+              <div className="absolute top-2 -right-4 z-20 w-16 h-16 rounded-2xl shadow-extruded bg-[#E0E5EC] hidden md:flex items-center justify-center">
+                <Target className="text-violet-500" size={26} />
+              </div>
 
-            <div className="absolute right-0 top-8 w-[430px] max-w-full">
-              <div className="relative rounded-[40px] p-5 glass">
-                <div className="absolute -right-7 -top-7 icon-3d z-20">
-                  <Target />
-                </div>
-
+              <div className="relative rounded-[34px] p-4 shadow-extruded bg-[#E0E5EC]">
                 <Image
                   src="/profile.webp"
                   alt="Tayyab Mughal"
-                  width={430}
-                  height={560}
-                  className="rounded-[32px] w-full h-[560px] object-cover object-top"
+                  width={520}
+                  height={620}
+                  className="w-full h-[520px] md:h-[590px] object-cover object-center rounded-[28px]"
                   priority
                 />
               </div>
-            </div>
 
-            <div className="absolute right-0 bottom-6 glass rounded-[28px] p-5 w-[280px] hidden xl:block">
-              <h3 className="font-extrabold mb-4">Ranking Distribution</h3>
-              <div className="grid grid-cols-[90px_1fr] gap-4 items-center">
-                <div className="w-20 h-20 rounded-full shadow-insetDeep flex items-center justify-center text-violet-500 font-extrabold">
-                  SEO
-                </div>
-                <div className="space-y-2 text-xs">
-                  <Rank label="Top 3" value="142" />
-                  <Rank label="4-10" value="318" />
-                  <Rank label="11-20" value="421" />
-                  <Rank label="21-50" value="289" />
+              <div className="absolute bottom-28 -left-6 md:-left-24 z-20 hidden md:block">
+                <FloatingCard title="Backlinks" value="6,680" label="+457%" />
+              </div>
+
+              <div className="absolute -bottom-6 -right-2 md:-right-6 z-20 w-[290px] rounded-[28px] p-6 shadow-extruded bg-[#E0E5EC] hidden md:block">
+                <h3 className="text-lg font-extrabold text-[#273444] mb-5">
+                  Ranking Distribution
+                </h3>
+
+                <div className="flex items-center gap-5">
+                  <div className="w-24 h-24 rounded-full shadow-insetDeep flex items-center justify-center">
+                    <span className="text-violet-500 font-black text-xl">
+                      SEO
+                    </span>
+                  </div>
+
+                  <div className="flex-1 space-y-2 text-sm">
+                    <Rank label="Top 3" value="142" />
+                    <Rank label="4-10" value="318" />
+                    <Rank label="11-20" value="421" />
+                    <Rank label="21-50" value="289" />
+                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="glass rounded-[32px] p-6 mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-4 gap-6 mt-14 rounded-[32px] p-6 shadow-extruded">
           <BottomStat
             icon={<TrendingUp />}
             value="82.1K"
@@ -158,61 +166,54 @@ export default function Hero() {
   );
 }
 
-function MiniPill({ icon, text }) {
+function MiniStat({ icon, text }) {
   return (
-    <div className="rounded-2xl px-4 py-3 shadow-extruded flex items-center gap-3 text-sm font-bold">
+    <div className="h-14 rounded-2xl px-5 flex items-center gap-3 shadow-extruded">
       <span className="text-violet-500">{icon}</span>
-      {text}
+      <span className="text-sm font-extrabold text-[#273444]">{text}</span>
     </div>
   );
 }
 
-function Brand({ text }) {
+function FloatingCard({ title, value, label }) {
   return (
-    <div className="rounded-2xl shadow-inset px-4 py-3 text-center text-[#3D4852]">
-      {text}
-    </div>
-  );
-}
+    <div className="w-40 rounded-[26px] p-5 shadow-extruded bg-[#E0E5EC]">
+      <p className="font-extrabold text-[#3D4852]">{title}</p>
+      <h3 className="text-3xl font-black text-[#3D4852] mt-3">{value}</h3>
+      <p className="text-violet-500 font-extrabold mt-1">{label}</p>
 
-function FloatingCard({ className, title, value, note }) {
-  return (
-    <motion.div
-      animate={{ y: [0, -10, 0] }}
-      transition={{ duration: 4, repeat: Infinity }}
-      className={`absolute z-20 glass rounded-[24px] p-5 w-[180px] hidden lg:block ${className}`}
-    >
-      <p className="text-sm font-bold">{title}</p>
-      <h3 className="text-2xl font-extrabold mt-2">{value}</h3>
-      <p className="text-sm text-violet-500 font-bold mt-1">{note}</p>
-      <div className="h-10 mt-3 flex items-end gap-1">
-        {[30, 45, 35, 55, 70].map((h, i) => (
+      <div className="flex gap-2 mt-6">
+        {[1, 2, 3, 4, 5].map((item) => (
           <span
-            key={i}
-            style={{ height: `${h}%` }}
-            className="w-full rounded-full bg-violet-500/70"
+            key={item}
+            className={`rounded-full bg-violet-500/70 ${
+              item > 3 ? "w-6 h-6" : "w-6 h-3 mt-3"
+            }`}
           />
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 function Rank({ label, value }) {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between gap-4">
       <span className="text-muted">{label}</span>
-      <b>{value}</b>
+      <span className="font-extrabold text-[#273444]">{value}</span>
     </div>
   );
 }
 
 function BottomStat({ icon, value, label }) {
   return (
-    <div className="flex items-center gap-4">
-      <div className="icon-3d">{icon}</div>
+    <div className="flex items-center gap-5">
+      <div className="w-16 h-16 rounded-2xl shadow-insetDeep flex items-center justify-center text-violet-500">
+        {icon}
+      </div>
+
       <div>
-        <p className="text-3xl font-extrabold">{value}</p>
+        <h3 className="text-3xl font-black text-[#3D4852]">{value}</h3>
         <p className="text-muted">{label}</p>
       </div>
     </div>

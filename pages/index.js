@@ -1,21 +1,20 @@
-import Header from "../components/Header";
+import Head from "next/head";
 import Hero from "../components/Hero";
 import Skills from "../components/Skills";
-import Projects from "../components/Projects";
-import Analytics from "../components/Analytics";
-import Experience from "../components/Experience";
-import ContactForm from "../components/ContactForm";
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <Head>
+        <title>Tayyab Mughal | Senior SEO Expert</title>
+        <meta
+          name="description"
+          content="Portfolio of Tayyab Mughal, Senior SEO Expert and Digital Growth Strategist."
+        />
+      </Head>
+
       <Hero />
       <Skills />
-      <Projects />
-      <Analytics />
-      <Experience />
-      <ContactForm />
     </>
   );
 }
