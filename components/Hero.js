@@ -4,32 +4,8 @@ import { ArrowRight, User, Rocket, BarChart3, Target } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen bg-[#E0E5EC] pt-8 pb-24">
+    <section id="home" className="min-h-screen bg-[#E0E5EC] pt-24 pb-24">
       <div className="page-shell">
-        <nav className="w-full max-w-[1200px] mx-auto rounded-[32px] px-6 py-4 shadow-extruded flex items-center justify-center gap-3 md:gap-8 mb-20">
-          {["Home", "Projects", "Results", "Experience", "Contact"].map(
-            (item, index) => (
-              <a
-                key={item}
-                href={
-                  item === "Home"
-                    ? "#home"
-                    : item === "Results"
-                      ? "#analytics"
-                      : `#${item.toLowerCase()}`
-                }
-                className={`px-5 md:px-7 py-3 rounded-2xl text-xs md:text-sm font-extrabold transition ${
-                  index === 0
-                    ? "bg-violet-500 text-white shadow-extruded"
-                    : "text-[#3D4852] hover:text-violet-500"
-                }`}
-              >
-                {item}
-              </a>
-            ),
-          )}
-        </nav>
-
         <div className="grid xl:grid-cols-[1.08fr_0.92fr] gap-16 2xl:gap-24 items-center">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
